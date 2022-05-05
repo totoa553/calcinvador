@@ -132,16 +132,15 @@ async function game(){
       }
       while(battlesum <= nenemies){    
         stageenemies = []; 
-    stageenemies.push(stageenemie[inum],stageenemie[inum-1],stageenemie[inum-2],stageenemie[inum-3],stageenemie[inum-4],stageenemie[inum-5]);
+    stageenemies.push(stageenemie[inum-5],stageenemie[inum-4],stageenemie[inum-3],stageenemie[inum-2],stageenemie[inum-1],stageenemie[inum]);
         console.log(stageenemies);
-        stageobj5 = stageenemies[0];
-        stageobj4 = stageenemies[1];
-        stageobj3 = stageenemies[2];
-        stageobj2 = stageenemies[3];
-        stageobj1 = stageenemies[4];
-        stageobj0 = stageenemies[5];
+        stageobj5 = stageenemies[5];
+        stageobj4 = stageenemies[4];
+        stageobj3 = stageenemies[3];
+        stageobj2 = stageenemies[2];
+        stageobj1 = stageenemies[1];
+        stageobj0 = stageenemies[0];
         inum++;
-        battlesum++;
         array = [calci,
                lifeimage,
                stageobj0,
@@ -189,6 +188,7 @@ async function Keyput(event){
                stageobj3,
                stageobj4,
                stageobj5];
+    
     remove();
     setup();
   }
@@ -197,7 +197,30 @@ async function Keyput(event){
   }
 }
 function aim(){
-  console.log("aim");
+  if(stageenemies.includes(calci) === true){
+    var index = stageenemies.indexOf(calci);
+    var indexe = stageenemie.indexOf(calci);
+    stageenemies.splice(index, 1, "l0"); 
+    stageenemie.splice(indexe, 1, "l0"); 
+    console.log(stageenemies,stageenemie);
+    stageobj5 = stageenemies[5];
+    stageobj4 = stageenemies[4];
+    stageobj3 = stageenemies[3];
+    stageobj2 = stageenemies[2];
+    stageobj1 = stageenemies[1];
+    stageobj0 = stageenemies[0];
+    array = [calci,
+               lifeimage,
+               stageobj0,
+               stageobj1,
+               stageobj2,
+               stageobj3,
+               stageobj4,
+               stageobj5];
+    remove();
+    setup();
+    battlesum++;
+  }
 }
 function random(){
   num = Math.floor(Math.random() * 9);
