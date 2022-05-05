@@ -133,22 +133,20 @@ async function game(){
       while(battlesum <= nenemies){    
         stageenemies = []; 
     stageenemies.push(stageenemie[inum-5],stageenemie[inum-4],stageenemie[inum-3],stageenemie[inum-2],stageenemie[inum-1],stageenemie[inum]);
-        console.log(stageenemies);
-        stageobj5 = stageenemies[5];
-        stageobj4 = stageenemies[4];
-        stageobj3 = stageenemies[3];
-        stageobj2 = stageenemies[2];
-        stageobj1 = stageenemies[1];
-        stageobj0 = stageenemies[0];
+    while(stageenemies.includes(undefined) === true){
+      var undex = stageenemies.indexOf(undefined);
+      stageenemies.splice(undex, 1, 10);
+    }
         inum++;
         array = [calci,
                lifeimage,
-               stageobj0,
-               stageobj1,
-               stageobj2,
-               stageobj3,
-               stageobj4,
-               stageobj5];
+               stageenemies[0],
+               stageenemies[1],
+               stageenemies[2],
+               stageenemies[3],
+               stageenemies[4],
+               stageenemies[5]];
+        stageenemies.sort(function(a, b) {return b.toString().length-a.toString().length;});
         remove();
         setup();
         await sleep(time);
@@ -156,12 +154,12 @@ async function game(){
     }
       array = ["l0",
                lifeimage,
-               stageobj0,
-               stageobj1,
-               stageobj2,
-               stageobj3,
-               stageobj4,
-               stageobj5];
+               stageenemies[0],
+               stageenemies[1],
+               stageenemies[2],
+               stageenemies[3],
+               stageenemies[4],
+               stageenemies[5]];
     setup();
 }
 
@@ -180,14 +178,15 @@ async function Keyput(event){
       i=0;
       calci = 0;
     }
+    console.log(stageenemies);
     array = [calci,
                lifeimage,
-               stageobj0,
-               stageobj1,
-               stageobj2,
-               stageobj3,
-               stageobj4,
-               stageobj5];
+               stageenemies[0],
+               stageenemies[1],
+               stageenemies[2],
+               stageenemies[3],
+               stageenemies[4],
+               stageenemies[5]];
     
     remove();
     setup();
@@ -198,25 +197,30 @@ async function Keyput(event){
 }
 function aim(){
   if(stageenemies.includes(calci) === true){
+    while(stageenemies.includes(undefined) === true){
+      var undex = stageenemies.indexOf(undefined);
+      stageenemies.splice(undex, 1, 10);
+    }
+    stageenemies = stageenemies;
+    console.log(stageenemies);
     var index = stageenemies.indexOf(calci);
     var indexe = stageenemie.indexOf(calci);
-    stageenemies.splice(index, 1, "l0"); 
-    stageenemie.splice(indexe, 1, "l0"); 
-    console.log(stageenemies,stageenemie);
-    stageobj5 = stageenemies[5];
-    stageobj4 = stageenemies[4];
-    stageobj3 = stageenemies[3];
-    stageobj2 = stageenemies[2];
-    stageobj1 = stageenemies[1];
-    stageobj0 = stageenemies[0];
+    console.log(stageenemies);
+    stageenemies.splice(index, 1, 10); 
+    stageenemie.splice(indexe, 1, 10); 
+    console.log(stageenemies);
+    stageenemies.sort(function(a, b) {return b.toString().length-a.toString().length;});
+    stageenemie.sort(function(a, b) {return b.toString().length-a.toString().length;});
+    console.log(stageenemies);
     array = [calci,
                lifeimage,
-               stageobj0,
-               stageobj1,
-               stageobj2,
-               stageobj3,
-               stageobj4,
-               stageobj5];
+               stageenemies[0],
+               stageenemies[1],
+               stageenemies[2],
+               stageenemies[3],
+               stageenemies[4],
+               stageenemies[5]];
+    console.log(stageenemies);
     remove();
     setup();
     battlesum++;
